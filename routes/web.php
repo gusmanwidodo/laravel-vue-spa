@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\Dashboard\SpaController;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome');
-})->name('home');
+// Admin SPA - catch all admin routes
+Route::get('/{any?}', SpaController::class)
+    ->where('any', '.*')
+    ->name('dashboard');
